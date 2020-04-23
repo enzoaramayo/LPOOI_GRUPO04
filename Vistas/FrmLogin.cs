@@ -22,10 +22,15 @@ namespace Vistas
             InitializeComponent();
         }
 
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            //TODO ...
+        }
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             Boolean bandUsuEncontrado = false;
-           
+
             CrearUsuarios();
             string usuario = txtUsuario.Text;
             string contrasena = txtContrasena.Text;
@@ -34,13 +39,13 @@ namespace Vistas
             Form messageError = new msgBoxFormError();
             if (bandUsuEncontrado)
             {
-               
+
                 msgBoxForm.mensaje = txtUsuario.Text;
                 message.Show();
                 this.Hide();
             }
             else
-            {  
+            {
                 msgBoxFormError.mensaje = "Datos de acceso incorrectos";
                 messageError.Show();
             }
@@ -60,23 +65,11 @@ namespace Vistas
             {
                 if (usu.Usu_NombreUsuario == usuario && usu.Usu_Contrasena == contrasena)
                 {
-                    
+
                     return true;
                 }
             }
             return false;
-        }
-
-        private void btnIniciarSesión_MouseHover(object sender, EventArgs e)
-        {
-            this.btnIniciarSesión.Font = new System.Drawing.Font("Century Gothic", 10.5F , System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-
-
-        }
-
-        private void btnIniciarSesión_MouseLeave(object sender, EventArgs e)
-        {
-            this.btnIniciarSesión.Font = new System.Drawing.Font("Century Gothic", 9.75F);
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -84,14 +77,19 @@ namespace Vistas
             this.Close();
         }
 
-        private void btnSalir_MouseHover(object sender, EventArgs e)
+        //Métodos genericos para mouseHover y  mouseLeave
+        //PD: Pegarle una revisada a FrmLogin.cs 
+        //Atte: Enso
+        private void button_MouseHover(object sender, EventArgs e)
         {
-            this.btnSalir.Font = new System.Drawing.Font("Century Gothic", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            Button botonActual = (Button)sender;
+            botonActual.Font = new System.Drawing.Font("Century Gothic", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         }
 
-        private void btnSalir_MouseLeave(object sender, EventArgs e)
+        private void button_MouseLeave(object sender, EventArgs e)
         {
-            this.btnSalir.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            Button botonActual = (Button)sender;
+            botonActual.Font = new System.Drawing.Font("Century Gothic", 9.75F);
         }
     }
 }
